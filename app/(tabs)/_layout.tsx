@@ -1,13 +1,19 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useDispatch } from 'react-redux';
+import { setAllTripsThunk } from '@/Redux/Reducers/tripSlice';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(setAllTripsThunk())
+  },[])
   return (
     <Tabs
       screenOptions={{
@@ -24,14 +30,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="(trip)" 
         options={{
-          title: 'Explore',
+          title: 'Trip',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon name={focused ? 'train' : 'train-outline'} color={color} />
           ),
         }}
       />
+
     </Tabs>
   );
 }
