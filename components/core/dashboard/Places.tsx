@@ -18,7 +18,7 @@ const Places = () => {
                                 <PlaceCard />
                             )}
                         />
-      <FlatList
+      {/* <FlatList
                             data={[1, 2, 3, 4, 4,]}
                             horizontal
                             className='py-2'
@@ -26,7 +26,7 @@ const Places = () => {
                             renderItem={item => (
                                 <PlaceCard />
                             )}
-                        />
+                        /> */}
      
       </View>
     </ScrollView>

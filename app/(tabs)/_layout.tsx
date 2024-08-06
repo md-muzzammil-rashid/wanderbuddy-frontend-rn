@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 import React, { useEffect } from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
@@ -33,6 +33,7 @@ export default function TabLayout() {
         name="(trip)" 
         options={{
           title: 'Trip',
+          href: "(tabs)/(trip)",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'train' : 'train-outline'} color={color} />
           ),

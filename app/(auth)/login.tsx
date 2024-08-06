@@ -22,7 +22,8 @@ const login = () => {
             setErrorVisible(true)
         }else{
             setErrorVisible(false)
-            router.replace('(tabs)')
+            router.dismissAll();
+            router.push('(tabs)')
         }
         console.log(res);
         console.log("************");

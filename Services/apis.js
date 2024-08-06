@@ -14,7 +14,8 @@ const API_VERSION = 'api/v1'
 const route = {
     USERS : BASE_URL + API_VERSION + "/users",
     TRIP : BASE_URL + API_VERSION + "/trip",
-    INVITATION : BASE_URL + API_VERSION + "/invitation"
+    INVITATION : BASE_URL + API_VERSION + "/invitation",
+    MESSAGE : BASE_URL + API_VERSION + "/message"
 }
 
 const userEndPoint = {
@@ -41,11 +42,17 @@ const invitationEndPoint = {
     RESPOND_TO_INVITATIONS : route.INVITATION + "/respond-to-invitations"
 }
 
+const messageEndPoint = {
+    GET_MESSAGE : route.MESSAGE + "/get-messages/",
+    SEND_MESSAGE : route.MESSAGE + "/send-message/"
+}
+
 
 
 export {
     userEndPoint,
     METHODS,
     tripEndPoint,
-    invitationEndPoint
+    invitationEndPoint,
+    messageEndPoint
 }

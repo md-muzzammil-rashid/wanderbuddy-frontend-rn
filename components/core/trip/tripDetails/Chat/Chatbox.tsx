@@ -1,22 +1,22 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
-const Chatbox = ({chat, currentUser, avatar, username})=> {
-
+const Chatbox = ({chat, currentUser})=> {
+    
     return (
-    <View className={`${chat.item.senderId==currentUser&& "justify-end"} flex-row my-2 mx-3 `}>
+    <View className={`${chat.sender._id==currentUser? "justify-end pl-4":"pr-4 "} flex-row my-2 mx-3 `}>
       {
-        chat.item.senderId != currentUser &&
-    <Image className='h-8 w-8 rounded-full' src={avatar}/>
+        chat.sender._id != currentUser &&
+    <Image className='h-8 w-8 rounded-full' src={chat?.sender?.profile?.avatar}/>
     }
-      <View className={`rounded-3xl ${chat.item.senderId != currentUser?"bg-blue-500 rounded-tl-sm":"bg-gray-200 rounded-tr-sm"} mx-3 p-2 pb-3 px-4  `}>
+      <View className={`rounded-3xl ${chat.sender._id != currentUser?"bg-blue-500 rounded-tl-sm":"bg-gray-200 rounded-tr-sm"} mx-3 p-2 pb-3 px-4  `}>
     {
-      currentUser != chat.item.senderId &&
-    <Text className={`${currentUser==chat.item.senderId?"text-black":'text-white'} font-psemibold`}>{username}</Text>
+      currentUser != chat.sender._id &&
+    <Text className={`${currentUser==chat.senderId?"text-black":'text-white'} font-psemibold`}>{chat.sender.profile.displayName}</Text>
     }
-    <Text className={`${currentUser==chat.item.senderId?"text-black":' text-white'}
+    <Text className={`${currentUser==chat.sender._id?"text-black":' text-white'}
       font-pregular
-    `}>{chat.item.content}</Text>
+    `}>{chat.message}</Text>
     </View>
     </View>
   )

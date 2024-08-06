@@ -1,12 +1,15 @@
 import { View, Text, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FlatList,  } from 'react-native-collapsible-tab-view'
 import CustomInput from '@/components/common/CustomInput'
 import Chatbox from './Chat/Chatbox'
 import CustomInputWithSend from '@/components/common/CustomInputWithSend'
+import useChat from '@/hooks/useChat'
+import { useLocalSearchParams } from 'expo-router'
+import { sendMessageAPI } from '@/Services/Operations/MessageAPI'
 
 const Chats = () => {
-  const currentUser = '60c72b2f4f1a2c001fef1a99'
+  const currentUser = '65ddcafbb5d6309e539526f6'
   const dummyChat = {
     "chatRoom": {
       "_id": "60c72b2f4f1a2c001fef1a9a",
@@ -253,6 +256,24 @@ const Chats = () => {
 
     ]
   }
+  const [messages, setMessages] = useState([])
+  const [messageData, setMessageData] = useState({message:""})
+  const {tripId} = useLocalSearchParams()
+  
+  useChat(tripId, "65ddcafbb5d6309e539526f6", setMessages )
+
+  const sendMessage = async () => {
+    if(messageData && messageData.message.trim().length>0){
+     const res = await sendMessageAPI(tripId, messageData )
+     console.log(res);
+     setMessageData({message:""})
+     
+    }
+  }
+  useEffect(()=>{
+    console.log(messages.length);
+    
+  },[messages])
   return (
     <>
     <FlatList
@@ -264,18 +285,16 @@ const Chats = () => {
           </View>
         )
       }}
-      data={dummyChat.messages}
-      renderItem={(chat)=>
+      data={messages}
+      renderItem={(message)=>
         <Chatbox 
-          avatar={dummyChat.chatRoom.participants.filter(user=>user._id==chat.item.senderId)[0].avatar} 
           currentUser = {currentUser} 
-          chat={chat} 
-          username={dummyChat.chatRoom.participants.filter(user=>user._id == chat.item.senderId)[0].username}  
+          chat={message.item} 
         />
       }
     />
     <View className='px-2'>
-    <CustomInputWithSend placeholder={'Message'}/>
+    <CustomInputWithSend value={messageData.message} handleSend={sendMessage} handleChange={(e)=>setMessageData({message:e})} placeholder={'Message'}/>
     </View>
     </>
   )

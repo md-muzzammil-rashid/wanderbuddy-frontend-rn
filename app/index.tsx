@@ -1,5 +1,5 @@
 import { View, Text, TouchableWithoutFeedback, ImageBackground } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from 'expo-router'
 import { onboarding1, onboarding2, onboarding3, onboarding4 } from '@/constants/Image'
@@ -8,6 +8,7 @@ import { TouchableOpacity } from 'react-native'
 import Toast, {} from 'react-native-toast-message'
 
 const index = () => {
+
   return (
     <>
     <View className='h-full'>

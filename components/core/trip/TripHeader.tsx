@@ -11,7 +11,7 @@ const TripHeader = () => {
   
   return (
     <View className=' flex-row justify-evenly'>
-      <TouchableWithoutFeedback onPress={() => router.navigate('(tabs)/(trip)')}>
+      <TouchableWithoutFeedback onPress={() => router.push('(tabs)/(trip)')}>
       <View className={`w-5/12 rounded-xl flex-row items-center justify-center gap-x- border-gray-400 border  my-3  py-3  ${!isInvitation ? "bg-blue-500" : "bg-white"}`}>
         <Ionicons size={16} name={!isInvitation?'airplane':'airplane-outline'} color={!isInvitation?'white':'black'}/>
           <Text className={`mx-2 font-pextrabold ${!isInvitation?'text-white':''}`}>Trips</Text>
@@ -19,7 +19,7 @@ const TripHeader = () => {
       </TouchableWithoutFeedback>
 
       <TouchableWithoutFeedback onPress={() => {console.log("navigating");
-       router.navigate('(tabs)/(trip)/invitations')}}>
+       router.push('(tabs)/(trip)/invitations')}}>
         <View className={`w-5/12 rounded-xl flex-row items-center justify-center gap-x- border-gray-400 border  my-3  py-3  ${isInvitation ? "bg-green-500" : "bg-white"}`}>
         <Ionicons size={16} name={isInvitation?'mail-open':'mail'} color={isInvitation?'white':'black'}/>
           <Text className={`mx-2 font-pextrabold ${isInvitation?'text-white':''}`}>Invitation</Text>
