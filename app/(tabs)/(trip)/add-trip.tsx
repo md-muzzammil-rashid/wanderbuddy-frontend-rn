@@ -10,7 +10,6 @@ import Toast from 'react-native-toast-message'
 import { addTripAPI } from '@/Services/Operations/TripAPI'
 import { useDispatch } from 'react-redux'
 import { setAllTripsThunk } from '@/Redux/Reducers/tripSlice'
-import mime from 'mime'
 
 const AddTrip = () => {
     const [startDatePickerVisible, setStartDatePickerVisible] = useState(false)
