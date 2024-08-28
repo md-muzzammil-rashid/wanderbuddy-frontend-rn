@@ -1,11 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import { ScrollView } from 'react-native-collapsible-tab-view'
 
 const Hotels = () => {
   return (
-    <View>
+    <ScrollView>
       <Text>Hotels</Text>
-    </View>
+    </ScrollView>
   )
 }
 

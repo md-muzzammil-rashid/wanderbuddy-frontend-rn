@@ -7,6 +7,9 @@ import homeBackground from '@/assets/images/home-back.jpeg'
 import clip from '@/assets/images/clip.png'
 import map from '@/assets/images/map.webp'
 import map2 from '@/assets/images/map2.jpeg'
+import areoplane from '@/assets/images/aeroplane.webp'
+import train from '@/assets/images/train.avif'
+import worldmap from '@/assets/images/worldmap.jpeg'
 
 export {
     loginBackground,
@@ -17,5 +20,8 @@ export {
     homeBackground,
     map,
     clip,
-    map2
+    map2,
+    areoplane,
+    train,
+    worldmap
 } 

@@ -17,7 +17,7 @@ interface TabBarProps {
   tabProps: any;
 }
 
-const TabBar: FC<TabBarProps> = ({ tabNames, focusedIndex, onSetIndex,tabProps }) => {
+const TabBar: FC<TabBarProps> = ({ tabNames, focusedIndex, onSetIndex, tabProps }) => {
   const scrollViewRef = useRef<ScrollView>(null);
   const handleTabPress = (index: number) => {
     onSetIndex(index);

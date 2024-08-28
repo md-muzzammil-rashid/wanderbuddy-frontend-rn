@@ -1,4 +1,4 @@
-import { FlatList, View } from 'react-native'
+import { FlatList, Text, View } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { Tabs } from 'react-native-collapsible-tab-view'
 
@@ -6,7 +6,7 @@ import TabBar from './TabBar'
 import PlaceCard from '../core/dashboard/Places/PlaceCard'
 import Header from '../core/dashboard/Header'
 
-const CustomTabs = ({ tabs, header }) => {
+const CustomTabs = ({ tabs, header, enableScroll=true }) => {
     const [focusedIndex, setFocusedIndex] = useState(0);
     const containerRef = useRef(null);
 
@@ -16,7 +16,6 @@ const CustomTabs = ({ tabs, header }) => {
 
     return (
         <Tabs.Container
-        
             ref={containerRef}
             containerStyle={{ paddingTop: 0, flex: 1, display: 'flex' }}
             tabBarHeight={200}
@@ -38,8 +37,12 @@ const CustomTabs = ({ tabs, header }) => {
 
             // headerHeight={10}
             lazy
+
+            // PagerProps => used for setting current index for header styles for tabbar
             pagerProps={{
+                scrollEnabled:enableScroll,
                 onPageSelected: (event) => {
+                    
                     setFocusedIndex(event.nativeEvent.position);
                 },
                 removeClippedSubviews: true,

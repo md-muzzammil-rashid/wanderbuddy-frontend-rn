@@ -9,11 +9,13 @@ import { Ionicons } from '@expo/vector-icons'
 import CustomButton from '@/components/common/CustomButton'
 import * as DocumentPicker from 'expo-document-picker'
 import { router } from 'expo-router'
+import { createPostAPI } from '@/Services/Operations/PostAPI'
 
 const AddPost = () => {
     const [image, setImage] = useState()
     const dispatch = useDispatch()
     const [data, setData] = useState({caption:"", location:""})
+    const [loading, setLoading] = useState(false)
     const openPicker = async () => {
         const result = await DocumentPicker.getDocumentAsync({
             type: ['image/*']
@@ -40,18 +42,23 @@ const AddPost = () => {
             return ;
         }
         
+        setLoading(true)
         //  Send request to API
         let formData = new FormData();
-        formData.append('title', data.caption);
+        formData.append('caption', data.caption);
         formData.append('location', data.location);
-        formData.append('destinationImage', JSON.stringify(image))
+        formData.append('postImage', image)
     
         
         //FIXME:media is not uploading in remote device 
 
+        const res = await createPostAPI(formData);
+        console.log(res);
+        
         //After successful submission reset data
         setImage(null)
         setData({caption:"", location:""})
+        setLoading(false)
         console.log(formData);
         // on Success
         Toast.show({type:'success', text1:"Post added"})
@@ -86,7 +93,7 @@ const AddPost = () => {
                         }
                     </View>
                     <View className='absolute bottom-0 w-full ml-3 left-0'>
-                    <CustomButton classes=''  pressFunction={handleSubmit} title={'Add Post'} />
+                    <CustomButton classes=''   pressFunction={()=>!loading && handleSubmit()} title={'Add Post'} isLoading={loading} />
                     </View>
             </KeyboardAvoidingView>
         </SafeAreaView>

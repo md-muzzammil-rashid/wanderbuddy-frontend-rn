@@ -1,5 +1,6 @@
 // const BASE_URL = 'http://10.0.2.2:5050/'
-const BASE_URL = 'http://localhost:5050/'
+// const BASE_URL = 'http://localhost:5050/'
+const BASE_URL = "http://192.168.113.81:5050/"
 
 
 const METHODS = {
@@ -15,7 +16,9 @@ const route = {
     USERS : BASE_URL + API_VERSION + "/users",
     TRIP : BASE_URL + API_VERSION + "/trip",
     INVITATION : BASE_URL + API_VERSION + "/invitation",
-    MESSAGE : BASE_URL + API_VERSION + "/message"
+    MESSAGE : BASE_URL + API_VERSION + "/message",
+    POST : BASE_URL + API_VERSION + "/post",
+    TRANSPORTATION : BASE_URL + API_VERSION + "/transportation"
 }
 
 const userEndPoint = {
@@ -47,6 +50,26 @@ const messageEndPoint = {
     SEND_MESSAGE : route.MESSAGE + "/send-message/"
 }
 
+const postEndPoint = {
+    ADD_POST : route.POST + "/add",
+    GET_POSTS : route.POST + "/all-posts",
+    GET_POST : route.POST + "/get-post/",
+    LIKE_POST : route.POST + "/like-post/",
+    COMMENT_POST : route.POST + "/comment-post/",
+    GET_COMMENTS : route.POST + "/get-comments/",
+    
+    GET_USER_POSTS : route.POST + "/get-user-posts/",
+    DELETE_POST : route.POST + "/delete-post/",
+    GET_POST_REPLIES : route.POST + "/get-post-replies/",
+    DELETE_POST_REPLY : route.POST + "/delete-post-reply/",
+    
+}
+
+const transportationEndPoint = {
+    GET_FLIGHTS : route.TRANSPORTATION + "/get-flights",
+    GET_TRAINS : route.TRANSPORTATION + "/get-trains",
+    
+}
 
 
 export {
@@ -54,5 +77,7 @@ export {
     METHODS,
     tripEndPoint,
     invitationEndPoint,
-    messageEndPoint
+    messageEndPoint,
+    postEndPoint,
+    transportationEndPoint
 }

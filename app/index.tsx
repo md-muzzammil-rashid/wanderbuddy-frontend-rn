@@ -1,7 +1,7 @@
 import { View, Text, TouchableWithoutFeedback, ImageBackground } from 'react-native'
 import React, { useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { router } from 'expo-router'
+import { Redirect, router } from 'expo-router'
 import { onboarding1, onboarding2, onboarding3, onboarding4 } from '@/constants/Image'
 import CustomButton from '@/components/common/CustomButton'
 import { TouchableOpacity } from 'react-native'
@@ -9,7 +9,12 @@ import Toast, {} from 'react-native-toast-message'
 
 const index = () => {
 
+  // return (
+  //   <Redirect href={'(transportation)/train'}/>
+  // )
+
   return (
+
     <>
     <View className='h-full'>
       <ImageBackground source={onboarding4} fadeDuration={1000}  blurRadius={5} className='h-full justify-between'>

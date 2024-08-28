@@ -32,7 +32,7 @@ export default function HomeScreen() {
       
 
       <View style={styles.container} className='overflow-scroll'>
-        <CustomTabs header={<Header/>} tabs={MyTabs} />
+        <CustomTabs enableScroll={false} header={<Header/>} tabs={MyTabs} />
       </View>
     </SafeAreaView>
   );
